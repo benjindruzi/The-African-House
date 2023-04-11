@@ -10,7 +10,7 @@ function Hero() {
                 <p className="text-lg text-white mb-6">Experience the best African cuisine in town</p>
                 <button className="bg-yellow-500 hover:bg-yellow-600 text-white py-2 px-4 rounded">
                     Order Now
-                    </button>
+                </button>
             </div>
             <div className="w-1/2 bg-cover bg-center" style={{ backgroundImage: `url(${heroImage})` }}>
             </div>
