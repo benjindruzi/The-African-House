@@ -1,11 +1,13 @@
-import React from 'react'
+import React from 'react';
+import Home from './pages/Home';
+import './index.css';
 
-function App () {
+function App() {
     return (
         <div>
-            <h1>Hello, World!</h1>
+            <Home />
         </div>
     )
 }
 
-export default App
+export default App;
