@@ -5,7 +5,7 @@ import featuredDish3 from '../assets/featuredDish3.jpg';
 
 function FeaturedDishes() {
     return (
-        <section className="main featured-dishes">
+        <section className="main featured-dishes" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
             <div className="container mx-auto px-4">
                 <h2 className="text-yellow-300 text-4xl text-center mb-8">Our Popular Dishes</h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">

@@ -3,7 +3,7 @@ import heroImage from '../assets/heroImage.jpg';
 
 function Hero() {
     return (
-        <section className="main hero">
+        <section className="main hero" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
             <div className="flex h-screen mb-10 items-center">
                 <div className="flex flex-col justify-center items-start w-1/2">
                     <p className="text-white font-bold">Chase the African flavors</p>
