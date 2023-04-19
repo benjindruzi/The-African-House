@@ -2,8 +2,8 @@ import React from 'react';
 
 function Header() {
     return (
-        <header className="header text-white p-4 top-0 left-0 right-0 bg-opacity-90">
-            <div className="flex justify-between items-center mx-9 my-3">
+        <header className="header text-white top-0 left-0 right-0 bg-opacity-90">
+            <div className="flex justify-between items-center my-10">
                 <a href="/" className="logo text-xl font-bold uppercase hover:text-yellow-500">
                     The African House
                 </a>

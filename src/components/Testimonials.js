@@ -8,12 +8,12 @@ function Testimonials() {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {testimonialsData.map((testimonial, index) => (
                         <div key={index} className="testimonial-card rounded overflow-hidden shadow-lg p-6 bg-opacity-90 bg-gray-800 text-white">
-                            <p className="text-base mb-4">{testimonial.content}</p>
-                            <div className="flex items-center">
+                            <p className="text-base mb-4 bg-gray-800">{testimonial.content}</p>
+                            <div className="flex items-center bg-gray-800">
                                 <img className="w-12 h-12 rounded-full mr-4" src={testimonial.avatar} alt="Avatar" />
                                 <div>
-                                    <p className="font-bold text-lg">{testimonial.name}</p>
-                                    <p className="text-sm">{testimonial.location}</p>
+                                    <p className="font-bold text-lg bg-gray-800">{testimonial.name}</p>
+                                    <p className="text-sm bg-gray-800">{testimonial.location}</p>
                                 </div>
                             </div>
                         </div>
