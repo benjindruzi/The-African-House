@@ -8,9 +8,9 @@ function Hero() {
                 <div className="flex flex-col justify-center items-start w-1/2">
                     <p className="text-white font-bold">Chase the African flavors</p>
                     <hr className="w-3 my-2 border-t-2 my-4 border-white" />
-                    <h1 className="text-yellow-300 text-7xl font-bold-400 mb-4">Welcome to</h1>
-                    <h1 className="text-yellow-300 text-7xl font-bold-400 mb-4">The African House</h1>
-                    <p className="text-white w-3/4 text-lg mb-6">
+                    <h1 className="font-cormorant-upright text-yellow-300 text-7xl font-bold-400 mb-4">Welcome to</h1>
+                    <h1 className="font-cormorant-upright text-yellow-300 text-7xl font-bold-400 mb-4">The African House</h1>
+                    <p className="text-white w-3/4 text-md mb-6">
                         Embark on a flavorful Safari: Savor the spirit of Africa 
                         and discover the rich, exotic tastes of our authentic, 
                         home-cooked delicacies from across the continent.
