@@ -1,11 +1,19 @@
 const express = require('express');
 const app = express();
-const port = 5000; // 
 
-app.get('/', (req, res) => {
-  res.json({ message: 'Hello from Express!' });
-});
+const PORT = 5000;
 
-app.listen(port, () => {
-  console.log(`Server running on http://localhost:${port}`);
+// Middleware
+app.use(express.json());
+
+// Import routes
+const menuItemsRoutes = require('./routes/menuItems');
+
+// Mount routes
+app.use('/menu-items', menuItemsRoutes);
+
+
+
+app.listen(PORT, () => {
+  console.log(`Server running on http://localhost:${PORT}`);
 });
