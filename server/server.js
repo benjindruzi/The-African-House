@@ -3,9 +3,6 @@ const app = express();
 
 const PORT = 5000;
 
-// Load environment variables
-require('dotenv').config();
-
 // Middleware
 app.use(express.json());
 
