@@ -5,58 +5,88 @@ const db = require('../db/db');
 router.get('/', async (req, res) => {
     try {
         const { rows } = await db.query('SELECT * FROM menu_items');
-        res.send(rows);
+
+        res.json(rows);
     } catch (error) {
         res.status(500).send({ error: error.message });
     }
 });
 
-// router.get('/:id', (req, res) => {
-//     const menuItemId = parseInt(req.params.id);
-//     const menuItem = menuItems.find(item => item.id === menuItemId);
+router.get('/:id', async (req, res) => {
+    const { id } = req.params;
+    
+    try {
+        const { rows } = await db.query(
+            'SELECT * FROM menu_items WHERE id = $1',
+            [id]
+        );
 
-//     if (menuItem) {
-//         res.status(200).send(menuItem);
-//     } else {
-//         res.status(404).send(`Menu item with ID ${menuItemId} not found`);
-//     }
-// });
+        if (rows.length > 0) {
+            res.status(200).json(rows[0]);
+        } else {
+            res.status(404).send('Menu item not found');
+        }
+    } catch (error) {
+        res.status(500).send({ error: error.message });
+    }
+});
 
-// router.put('/:id', (req, res) => {
-//     const menuItemId = parseInt(req.params.id);
-//     const menuItem = menuItems.find(item => item.id === menuItemId);
+router.put('/:id', async (req, res) => {
+    const { id } = req.params;
+    const { name, description, price, category } = req.body;
 
-//     const updatedMenuItem = req.body;
+    try {
+        const { rows } = await db.query(
+            'UPDATE menu_items SET name = $1, description = $2, price = $3, category = $4, updated_at = NOW() WHERE id = $5 RETURNING *',
+            [name, description, price, category, id]
+        );
 
-//     if (menuItem) {
-//         Object.assign(menuItem, updatedMenuItem);
-//         res.status(200).send(menuItem);
-//     } else {
-//         res.status(404).send(`Menu item with ID ${menuItemId} not found`)
-//     }
-// });
+        if (rows.length > 0) {
+            res.status(200).json(rows[0]);
+        } else {
+            res.status(404).send('Menu item not found')
+        }
+    } catch (error) {
+        res.status(500).send({ error: error.message });   
+    }
+});
 
-// router.post('/', (req, res) => {
-//     const newMenuItem = req.body;
+router.post('/', async (req, res) => {
+    const { name, description, price, category } = req.body;
 
-//     if (newMenuItem) {
-//         menuItems.push(newMenuItem);
-//         res.status(201).send(newMenuItem);
-//     } else {
-//         res.status(400).send('Failed to create a new menu item');
-//     }
-// });
+    try {
+        const { rows } = await db.query(
+            'INSERT INTO menu_items (name, description, price, category, created_at, updated_at) VALUES ($1, $2, $3, $4, NOW(), NOW()) RETURNING *',
+            [name, description, price, category]
+        );
 
-// router.delete('/:id', (req, res) => {
-//     const menuItemId = parseInt(req.params.id);
-//     const menuItemIndex = menuItems.findIndex(item => item.id === menuItemId);
+        if (rows.length > 0) {
+            res.status(201).json(rows);
+        } else {
+            res.status(400).send('Failed to create a new menu item');
+        }
+    } catch (error) {
+        res.status(500).send({ error: error.message});
+    }
+});
 
-//     if (menuItemIndex !== -1) {
-//         menuItems.splice(menuItemIndex, 1);
-//         res.status(204).send(`Menu item with ID ${menuItemId} has been deleted`);
-//     } else {
-//         res.status(404).send(`Menu item with ID ${menuItemId} not found`);
-//     }
-// });
+router.delete('/:id', async (req, res) => {
+    const { id } = req.params;
+
+    try {
+        const { rows } = await db.query(
+            'DELETE FROM menu_items WHERE id = $1 RETURNING *',
+            [id]
+        );
+
+        if (rows.length > 0) {
+            res.status(200).json({ message: `Menu item with Id: ${id} deleted successfully` });  
+        } else {
+            res.status(404).send('Menu item not found');
+        }
+    } catch (error) {
+        res.status(500).send({ error: error.message});
+    }
+});
 
 module.exports = router;
