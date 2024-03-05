@@ -2,9 +2,9 @@ const menuItemModel = require('../models/menuItemsModel');
 
 const getMenuItems = async (req, res) => {
     try {
-        const { rows } = await menuItemModel.getMenuItems();
-
-        res.json(rows);
+        const menuItems = await menuItemModel.getMenuItems();
+        
+        res.json(menuItems);
     } catch (error) {
         res.status(500).send({ error: error.message });
     }
@@ -14,10 +14,10 @@ const getMenuItemById = async (req, res) => {
     const { id } = req.params;
     
     try {
-        const { rows } = await menuItemModel.getMenuItemById(id);
+        const menuItem = await menuItemModel.getMenuItemById(id);
 
-        if (rows.length > 0) {
-            res.status(200).json(rows[0]);
+        if (menuItem) {
+            res.status(200).json(menuItem);
         } else {
             res.status(404).send('Menu item not found');
         }
@@ -26,31 +26,14 @@ const getMenuItemById = async (req, res) => {
     }
 };
 
-const updateMenuItem = async (req, res) => {
-    const { id } = req.params;
-    const { name, description, price, category } = req.body;
-
-    try {
-        const { rows } = await menuItemModel.updateMenuItem(id, name, description, price, category);
-
-        if (rows.length > 0) {
-            res.status(200).json(rows[0]);
-        } else {
-            res.status(404).send('Menu item not found')
-        }
-    } catch (error) {
-        res.status(500).send({ error: error.message });   
-    }
-};
-
 const createMenuItem = async (req, res) => {
     const { name, description, price, category } = req.body;
 
     try {
-        const { rows } = await menuItemModel.createMenuItem(name, description, price, category);
+        const newMenuItem = await menuItemModel.createMenuItem(name, description, price, category);
 
-        if (rows.length > 0) {
-            res.status(201).json(rows);
+        if (newMenuItem) {
+            res.status(201).json(newMenuItem);
         } else {
             res.status(400).send('Failed to create a new menu item');
         }
@@ -59,13 +42,30 @@ const createMenuItem = async (req, res) => {
     }
 };
 
+const updateMenuItem = async (req, res) => {
+    const { id } = req.params;
+    const { name, description, price, category } = req.body;
+
+    try {
+        const updatedMenuItem = await menuItemModel.updateMenuItem(id, name, description, price, category);
+
+        if (updatedMenuItem) {
+            res.status(200).json(updatedMenuItem);
+        } else {
+            res.status(404).send('Menu item not found')
+        }
+    } catch (error) {
+        res.status(500).send({ error: error.message });   
+    }
+};
+
 const deleteMenuItem = async (req, res) => {
     const { id } = req.params;
 
     try {
-        const { rows } = await menuItemModel.deleteMenuItem(id);
+        const deletedMenuItem = await menuItemModel.deleteMenuItem(id);
 
-        if (rows.length > 0) {
+        if (deletedMenuItem) {
             res.status(200).json({ message: `Menu item with Id: ${id} deleted successfully` });  
         } else {
             res.status(404).send('Menu item not found');
@@ -78,7 +78,7 @@ const deleteMenuItem = async (req, res) => {
 module.exports = {
     getMenuItems,
     getMenuItemById,
-    updateMenuItem,
     createMenuItem,
+    updateMenuItem,
     deleteMenuItem
 };
