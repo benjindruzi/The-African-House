@@ -1,5 +1,3 @@
-import React from 'react';
-
 function Testimonials() {
     return (
         <section className="main testimonials" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">

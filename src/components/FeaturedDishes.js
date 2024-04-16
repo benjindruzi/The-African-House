@@ -1,4 +1,3 @@
-import React from 'react';
 import featuredDish1 from '../assets/featuredDish1.jpg';
 import featuredDish2 from '../assets/featuredDish2.jpg';
 import featuredDish3 from '../assets/featuredDish3.jpg';

@@ -1,4 +1,3 @@
-import React from 'react';
 import heroImage from '../assets/heroImage.jpg';
 
 function Hero() {

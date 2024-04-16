@@ -1,4 +1,4 @@
-import React from 'react';
+import { Link } from 'react-router-dom';
 
 function Header() {
     return (
@@ -9,16 +9,16 @@ function Header() {
                 </a>
                 <nav className="flex-1 text-center">
                     <ul className="nav-links flex justify-center space-x-6 font-bold-100">
-                        <li><a href="/">Home</a></li>
-                        <li><a href="/menu">Menu</a></li>
-                        <li><a href="/reservation">Reservation</a></li>
-                        <li><a href="/about">About Us</a></li>
-                        <li><a href="/gallery">Gallery</a></li>
+                        <li><Link to="/">Home</Link></li>
+                        <li><Link to="/menu">Menu</Link></li>
+                        <li><Link to="/reservation">Reservation</Link></li>
+                        <li><Link to="/about-us">About Us</Link></li>
+                        <li><Link to="/gallery">Gallery</Link></li>
                     </ul>
                 </nav>
                 <div>
                     <a href="/login" className="mr-4 hover:underline">Login</a>
-                    <a href="/signup" className="hover:underline">Sign Up</a>
+                    <a href="/sign-up" className="hover:underline">Sign Up</a>
                 </div>
             </div>
         </header>

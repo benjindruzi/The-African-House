@@ -1,14 +1,13 @@
-import React from 'react';
-import aboutUsImage from '../assets/aboutUsImage.jpg';
+import ourStoryImage from '../assets/ourStoryImage.jpg';
 
-function AboutUs() {
+function OurStory() {
     return (
         <section className="main about-us" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
             <div className="container mx-auto px-4">
                 <h2 className="text-yellow-300 text-4xl font-bold text-center mb-8">About Us</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div className="about-us-image">
-                        <img className="rounded object-cover h-full w-full" src={aboutUsImage} alt="About Us" />
+                        <img className="rounded object-cover h-full w-full" src={ourStoryImage} alt="About Us" />
                     </div>
                     <div className="about-us-text">
                         <p className="text-lg text-white mb-4">
@@ -42,4 +41,4 @@ function AboutUs() {
     );
 }
 
-export default AboutUs;
+export default OurStory;
