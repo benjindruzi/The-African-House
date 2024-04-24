@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const morgan = require('morgan');
+const cors = require('cors');
 
 // Load .env variables
 require('dotenv').config({ path: __dirname + '/../.env' });
@@ -8,6 +9,7 @@ require('dotenv').config({ path: __dirname + '/../.env' });
 // Middleware
 app.use(express.json());
 app.use(morgan('dev'));
+app.use(cors());
 
 // Import routes
 const authRoutes = require('./routes/authRoutes');

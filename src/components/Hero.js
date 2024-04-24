@@ -1,6 +1,13 @@
 import heroImage from '../assets/heroImage.jpg';
+import { useNavigate } from 'react-router-dom';
 
 function Hero() {
+    const navigate = useNavigate();
+
+    function goToMenu() {
+        navigate('/menu');
+    }
+
     return (
         <section className="main hero" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
             <div className="flex h-screen mb-10 items-center">
@@ -14,7 +21,7 @@ function Hero() {
                         and discover the rich, exotic tastes of our authentic, 
                         home-cooked delicacies from across the continent.
                     </p>
-                    <button className="bg-yellow-300 font-bold hover:bg-yellow-600 py-2 px-5">
+                    <button onClick={goToMenu} className="bg-yellow-300 font-bold hover:bg-yellow-600 py-2 px-5">
                         Order Now
                     </button>
                 </div>
