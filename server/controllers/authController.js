@@ -49,7 +49,7 @@ const loginUser = async (req, res) => {
         }
     );
 
-    res.json(token);
+    res.json({ token });
 };
 
 module.exports = {

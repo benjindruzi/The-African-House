@@ -1,8 +1,9 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
+import { createRoot } from 'react-dom/client';
 import App from './App';
-import 'aos/dist/aos.css';
+import './index.css';
 import AOS from 'aos';
+import 'aos/dist/aos.css';
 import { BrowserRouter } from 'react-router-dom';
 
 AOS.init({
@@ -10,7 +11,9 @@ AOS.init({
     once: true,
 });
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const container = document.getElementById('root');
+const root = createRoot(container);
+
 root.render(
     <React.StrictMode>
         <BrowserRouter>

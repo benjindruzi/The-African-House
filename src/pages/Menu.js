@@ -1,20 +1,28 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import MenuItem from '../components/MenuItem';
 
 function Menu() {
-    const [menuData, setMenuData] = useState({});
+    const [menuItems, setMenuItems] = useState({});
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        const fetchMenuData = async () => {
+        const fetchMenuItems = async () => {
+            const token = localStorage.getItem('token');
+            
             try {
-                const response = await fetch('http://localhost:5000/menu-items'); // Adjust as necessary
+                const response = await fetch('http://localhost:5000/menu-items', {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                        'Content-Type': 'application/json'
+                    }
+                });
                 if (!response.ok) {
                     throw new Error(`HTTP error! Status: ${response.status}`);
                 }
                 const data = await response.json();
-                setMenuData(groupByCategory(data));
+                setMenuItems(groupByCategory(data));
                 setLoading(false);
             } catch (error) {
                 console.error('Failed to fetch menu data:', error);
@@ -23,7 +31,7 @@ function Menu() {
             }
         };
 
-        fetchMenuData();
+        fetchMenuItems();
     }, []);
 
     function groupByCategory(items) {
@@ -37,8 +45,8 @@ function Menu() {
     if (error) return <p>Error: {error}</p>;
 
     return (
-        <div>
-            {Object.entries(menuData).map(([category, items]) => (
+        <div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
+            {Object.entries(menuItems).map(([category, items]) => (
                 <div key={category} className="mb-12">
                     <h2 className="text-yellow-300 text-4xl text-center mb-8">{category}</h2>
                     <div className="grid grid-cols-2 gap-x-4 gap-y-10">

@@ -1,6 +1,9 @@
 import { Link } from 'react-router-dom';
+import { useAuth } from '../contexts/AuthContext';
 
-function Header() {
+function Header({ onLoginClick }) {
+    const { isAuthenticated, logout } = useAuth();
+
     return (
         <header className="header text-white top-0 left-0 right-0 bg-opacity-90">
             <div className="flex justify-between items-center my-10">
@@ -17,8 +20,16 @@ function Header() {
                     </ul>
                 </nav>
                 <div>
-                    <a href="/login" className="mr-4 hover:underline">Login</a>
-                    <a href="/sign-up" className="hover:underline">Sign Up</a>
+                    {isAuthenticated ? (
+                            <button onClick={logout} className="mr-4 hover:underline">Sign Out</button>
+                        ) : 
+                        (
+                        <>
+                            <button onClick={onLoginClick} className="mr-4 hover:underline">Login</button>
+                            <Link to="/sign-up" className="hover:underline">Sign Up</Link>
+                        </>
+                        )
+                    }
                 </div>
             </div>
         </header>

@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const morgan = require('morgan');
 const cors = require('cors');
+const authenticateToken = require('./middleware/authMiddleware'); 
 
 // Load .env variables
 require('dotenv').config({ path: __dirname + '/../.env' });
@@ -19,7 +20,7 @@ const menuItemsRoutes = require('./routes/menuItemsRoutes');
 // Mount routes
 app.use('/auth', authRoutes);
 app.use('/users', usersRoutes);
-app.use('/menu-items', menuItemsRoutes);
+app.use('/menu-items', authenticateToken, menuItemsRoutes);
 
 
 const PORT = process.env.PORT || 5000;

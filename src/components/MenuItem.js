@@ -4,7 +4,7 @@ function MenuItem({ name, description, price }) {
     };
 
     return (
-        <div className="main menu-item shadow-md rounded-xl hover:shadow-lg transition-shadow p-6">
+        <div className="main menu-item">
             <h3 className="text-white text-xl font-bold mb-2">{name}</h3>
             <p className="text-white text-sm mb-4">{description}</p>
             <div className="flex justify-between items-center">
