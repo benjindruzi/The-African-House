@@ -49,7 +49,9 @@ const loginUser = async (req, res) => {
         }
     );
 
-    res.json({ token });
+    delete user.password;
+
+    res.json({ token, user });
 };
 
 module.exports = {

@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 
-function Header({ onLoginClick }) {
+function Header({ onLoginClick, onCartClick }) {
     const { isAuthenticated, logout } = useAuth();
 
     return (
@@ -21,7 +21,10 @@ function Header({ onLoginClick }) {
                 </nav>
                 <div>
                     {isAuthenticated ? (
+                        <>
+                            <button onClick={onCartClick} className="mr-4 hover:underline">Cart</button>
                             <button onClick={logout} className="mr-4 hover:underline">Sign Out</button>
+                        </>
                         ) : 
                         (
                         <>

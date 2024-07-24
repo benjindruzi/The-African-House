@@ -1,8 +1,8 @@
-const menuItemModel = require('../models/menuItemsModel');
+const menuItemsModel = require('../models/menuItemsModel');
 
 const getMenuItems = async (req, res) => {
     try {
-        const menuItems = await menuItemModel.getMenuItems();
+        const menuItems = await menuItemsModel.getMenuItems();
         
         res.json(menuItems);
     } catch (error) {
@@ -14,7 +14,7 @@ const getMenuItemById = async (req, res) => {
     const { id } = req.params;
     
     try {
-        const menuItem = await menuItemModel.getMenuItemById(id);
+        const menuItem = await menuItemsModel.getMenuItemById(id);
 
         if (menuItem) {
             res.status(200).json(menuItem);
@@ -30,7 +30,7 @@ const createMenuItem = async (req, res) => {
     const { name, description, price, category } = req.body;
 
     try {
-        const newMenuItem = await menuItemModel.createMenuItem(name, description, price, category);
+        const newMenuItem = await menuItemsModel.createMenuItem(name, description, price, category);
 
         if (newMenuItem) {
             res.status(201).json(newMenuItem);
@@ -47,12 +47,12 @@ const updateMenuItem = async (req, res) => {
     const { name, description, price, category } = req.body;
 
     try {
-        const updatedMenuItem = await menuItemModel.updateMenuItem(id, name, description, price, category);
+        const updatedMenuItem = await menuItemsModel.updateMenuItem(id, name, description, price, category);
 
         if (updatedMenuItem) {
             res.status(200).json(updatedMenuItem);
         } else {
-            res.status(404).send('Menu item not found')
+            res.status(404).send('Menu item not found');
         }
     } catch (error) {
         res.status(500).send({ error: error.message });   
@@ -63,7 +63,7 @@ const deleteMenuItem = async (req, res) => {
     const { id } = req.params;
 
     try {
-        const deletedMenuItem = await menuItemModel.deleteMenuItem(id);
+        const deletedMenuItem = await menuItemsModel.deleteMenuItem(id);
 
         if (deletedMenuItem) {
             res.status(200).json({ message: `Menu item with Id: ${id} deleted successfully` });  

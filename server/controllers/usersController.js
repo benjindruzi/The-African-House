@@ -1,5 +1,9 @@
 const usersModel = require('../models/usersModel');
 
+const getCurrentUser = async (req, res) => {
+    
+};
+
 const getUsers = async (req, res) => {
     const users = await usersModel.getUsers();
 
@@ -8,7 +12,7 @@ const getUsers = async (req, res) => {
     } catch (error) {
         res.status(500).send({ error: error.message });
     }
-}
+};
 
 const getUserById = async (req, res) => {
     const { id } = req.params;

@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { useAuth } from "../contexts/AuthContext";
+import { useState } from 'react';
+import { useAuth } from '../contexts/AuthContext';
 
 function LoginModal({ isOpen, onClose }) {
     const [email, setEmail] = useState('');
@@ -22,14 +22,11 @@ function LoginModal({ isOpen, onClose }) {
             
             const data = await response.json();
 
-            if (response.ok) {
-                console.log('Login successful: ', data);
-                login(data.token);
-                onClose();
-            } else {
-                console.error('Login failed:', data);
+            if (!response.ok) console.error('Login failed:', data);
 
-            }
+            console.log('Login successful: ', data);
+            login(data.token, data.user);
+            onClose();
         } catch (error) {
             console.error('Error:', error);
         }

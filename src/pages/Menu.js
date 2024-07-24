@@ -51,7 +51,7 @@ function Menu() {
                     <h2 className="text-yellow-300 text-4xl text-center mb-8">{category}</h2>
                     <div className="grid grid-cols-2 gap-x-4 gap-y-10">
                         {items.map(item => (
-                            <MenuItem key={item.id} name={item.name} description={item.description} price={parseFloat(item.price)} category={item.category} />
+                            <MenuItem key={item.id} id={item.id} name={item.name} description={item.description} price={parseFloat(item.price)} />
                         ))}
                     </div>
                 </div>
