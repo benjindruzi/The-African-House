@@ -90,10 +90,10 @@ JWT_SECRET=your_jwt_secret
 
 Here are some screenshots of the application:
 
-### Home Page
+### Home Page (Welcome section)
 [![Home Page](https://github.com/benjindruzi/The-African-House/blob/main/screenshots/screenshot1.png)](https://github.com/benjindruzi/The-African-House/blob/main/screenshots/screenshot1.png)
 
-### Home Page
+### Home Page (Popular Dishes section)
 [![Home Page](https://github.com/benjindruzi/The-African-House/blob/main/screenshots/screenshot2.png)](https://github.com/benjindruzi/The-African-House/blob/main/screenshots/screenshot2.png)
 
 ### About Us Page
