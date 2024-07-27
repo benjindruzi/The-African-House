@@ -10,9 +10,6 @@ The African House is a web application that showcases the rich culinary heritage
 - [Installation](#installation)
 - [Running the Application](#running-the-application)
 - [Environment Variables](#environment-variables)
-- [Scripts](#scripts)
-- [Contributing](#contributing)
-- [License](#license)
 
 ## Demo
 
@@ -94,12 +91,14 @@ JWT_SECRET=your_jwt_secret
 Here are some screenshots of the application:
 
 ### Home Page
-[![Home Page](https://i.postimg.cc/vDDbjnm5/Screenshot-1.png)](https://postimg.cc/vDDbjnm5)
-[![Home Page](https://i.postimg.cc/YjVMwS4Z/Screenshot-2.png)](https://postimg.cc/YjVMwS4Z)
+[![Home Page](https://github.com/benjindruzi/The-African-House/blob/main/Screenshot1.png)
+
+### Home Page
+[![Home Page](https://github.com/benjindruzi/The-African-House/blob/main/Screenshot1.png)
 
 ### About Us Page
-[![About Us Page](https://i.postimg.cc/MM3xH69c/Screenshot-3.png)](https://postimg.cc/MM3xH69c)
+[![About Us Page](https://github.com/benjindruzi/The-African-House/blob/main/Screenshot1.png)
 
 ### Menu Page
-[![Menu Page](https://i.postimg.cc/30yhDsqt/Screenshot-4.png)](https://postimg.cc/30yhDsqt)
+[![Menu Page](https://github.com/benjindruzi/The-African-House/blob/main/Screenshot1.png)
 
