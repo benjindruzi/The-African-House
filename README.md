@@ -87,6 +87,7 @@ DB_DATABASE=your_db_name
 DB_PASSWORD=your_db_password
 DB_PORT=your_db_port
 JWT_SECRET=your_jwt_secret
+```
 
 ## Screenshots
 
