@@ -1,70 +1,93 @@
-# Getting Started with Create React App
+# The African House
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The African House is a web application that showcases the rich culinary heritage of African cuisine. This project is built with React for the frontend and Node.js with Express for the backend, along with a PostgreSQL database.
 
-## Available Scripts
+## Table of Contents
 
-In the project directory, you can run:
+- [Demo](#demo)
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Installation](#installation)
+- [Running the Application](#running-the-application)
+- [Environment Variables](#environment-variables)
+- [Scripts](#scripts)
+- [Contributing](#contributing)
+- [License](#license)
 
-### `npm start`
+## Demo
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Check out the live demo: [The African House](#)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Features
 
-### `npm test`
+- User authentication (register, login)
+- View, create, update, and delete menu items
+- Place and manage orders
+- Responsive design
+- Interactive animations with AOS (Animate On Scroll)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Tech Stack
 
-### `npm run build`
+**Frontend:**
+- React
+- TailwindCSS
+- AOS (Animate On Scroll)
+- React Router
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+**Backend:**
+- Node.js
+- Express
+- PostgreSQL
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+**Miscellaneous:**
+- JWT for authentication
+- bcrypt for password hashing
+- dotenv for environment variables
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Installation
 
-### `npm run eject`
+1. Clone the repository:
+    ```bash
+    git clone https://github.com/benjindruzi/The-African-House.git
+    cd The-African-House
+    ```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+2. Install the dependencies for both frontend and backend:
+    ```bash
+    cd server
+    npm install
+    cd ../
+    npm install
+    ```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Running the Application
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Backend
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+1. Set up the PostgreSQL database and configure the environment variables (see below).
+2. Start the backend server:
+    ```bash
+    cd server
+    npm start
+    ```
 
-## Learn More
+### Frontend
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+1. In the root directory of the project, start the frontend:
+    ```bash
+    npm start
+    ```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+2. Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-### Code Splitting
+## Environment Variables
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Create a `.env` file in the `server` directory and add the following environment variables:
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```plaintext
+DB_USER=your_db_user
+DB_HOST=your_db_host
+DB_DATABASE=your_db_name
+DB_PASSWORD=your_db_password
+DB_PORT=your_db_port
+JWT_SECRET=your_jwt_secret
