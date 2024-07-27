@@ -91,14 +91,14 @@ JWT_SECRET=your_jwt_secret
 Here are some screenshots of the application:
 
 ### Home Page
-[![Home Page](https://github.com/benjindruzi/The-African-House/blob/main/Screenshot1.png)
+[![Home Page](https://github.com/benjindruzi/The-African-House/blob/main/screenshots/screenshot1.png)
 
 ### Home Page
-[![Home Page](https://github.com/benjindruzi/The-African-House/blob/main/Screenshot1.png)
+[![Home Page](https://github.com/benjindruzi/The-African-House/blob/main/screenshots/screenshot2.png)
 
 ### About Us Page
-[![About Us Page](https://github.com/benjindruzi/The-African-House/blob/main/Screenshot1.png)
+[![About Us Page](https://github.com/benjindruzi/The-African-House/blob/main/screenshots/screenshot3.png)
 
 ### Menu Page
-[![Menu Page](https://github.com/benjindruzi/The-African-House/blob/main/Screenshot1.png)
+[![Menu Page](https://github.com/benjindruzi/The-African-House/blob/main/screenshots/screenshot4.png)
 
