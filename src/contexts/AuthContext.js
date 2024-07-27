@@ -13,6 +13,7 @@ export const AuthProvider = ({ children }) => {
         localStorage.setItem('token', token);
         setIsAuthenticated(true);
         setUser(userData);
+        navigate('/');
     };
 
     const logout = () => {
