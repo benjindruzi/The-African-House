@@ -16,22 +16,19 @@ The African House is a web application that showcases the rich culinary heritage
 
 ## Demo
 
-Check out the live demo: [The African House](#)
+Live demo coming soon...
 
 ## Features
 
 - User authentication (register, login)
-- View, create, update, and delete menu items
-- Place and manage orders
-- Responsive design
-- Interactive animations with AOS (Animate On Scroll)
+- View menu items
+- Place orders
 
 ## Tech Stack
 
 **Frontend:**
 - React
 - TailwindCSS
-- AOS (Animate On Scroll)
 - React Router
 
 **Backend:**
@@ -42,7 +39,6 @@ Check out the live demo: [The African House](#)
 **Miscellaneous:**
 - JWT for authentication
 - bcrypt for password hashing
-- dotenv for environment variables
 
 ## Installation
 
@@ -91,3 +87,18 @@ DB_DATABASE=your_db_name
 DB_PASSWORD=your_db_password
 DB_PORT=your_db_port
 JWT_SECRET=your_jwt_secret
+
+## Screenshots
+
+Here are some screenshots of the application:
+
+### Home Page
+[![Home Page](https://i.postimg.cc/vDDbjnm5/Screenshot-1.png)](https://postimg.cc/vDDbjnm5)
+[![Home Page](https://i.postimg.cc/YjVMwS4Z/Screenshot-2.png)](https://postimg.cc/YjVMwS4Z)
+
+### About Us Page
+[![About Us Page](https://i.postimg.cc/MM3xH69c/Screenshot-3.png)](https://postimg.cc/MM3xH69c)
+
+### Menu Page
+[![Menu Page](https://i.postimg.cc/30yhDsqt/Screenshot-4.png)](https://postimg.cc/30yhDsqt)
+
