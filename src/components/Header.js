@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 
-function Header({ onLoginClick, onCartClick }) {
+function Header({ onLoginClick, onCartClick, onRegisterClick }) {
     const { isAuthenticated, logout } = useAuth();
 
     return (
@@ -29,7 +29,7 @@ function Header({ onLoginClick, onCartClick }) {
                         (
                         <>
                             <button onClick={onLoginClick} className="mr-4 hover:underline">Login</button>
-                            <Link to="/sign-up" className="hover:underline">Sign Up</Link>
+                            <button onClick={onRegisterClick} className="mr-4 hover:underline">Register</button>
                         </>
                         )
                     }

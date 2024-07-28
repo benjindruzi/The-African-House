@@ -6,7 +6,7 @@ function LoginModal({ isOpen, onClose }) {
     const [password, setPassword] = useState('');
     const { login } = useAuth();
 
-    if (!isOpen) return null;
+    if (!isOpen) return;
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -41,13 +41,13 @@ function LoginModal({ isOpen, onClose }) {
                         <label className="block text-sm font-bold mb-2" htmlFor="email">
                             Email
                         </label>
-                        <input className="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline" id="email" type="text" placeholder="Enter your email" value={email} onChange={(e) => {setEmail(e.target.value)}} />
+                        <input className="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"id="email" type="text" placeholder="Enter your email" value={email} onChange={(event) => {setEmail(event.target.value)}} />
                     </div>
                     <div className="mb-4">
                         <label className="block text-sm font-bold mb-2" htmlFor="password">
                             Password
                         </label>
-                        <input className="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="Enter your password" value={password} onChange={(e) => {setPassword(e.target.value)}}/>
+                        <input className="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="Enter your password" value={password} onChange={(event) => {setPassword(event.target.value)}}/>
                     </div>
                     <div className="flex items-center justify-between">
                         <button className="bg-yellow-300 font-bold hover:bg-yellow-600 text-black py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">

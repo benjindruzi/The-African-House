@@ -5,7 +5,7 @@ function CartModal({ isOpen, onClose }) {
     const { cart, removeFromCart, clearCart } = useCart();
     const { user } = useAuth();
 
-    if (!isOpen) return null;
+    if (!isOpen) return;
 
     const totalPrice = cart.reduce((total, item) => total + item.price, 0);
 

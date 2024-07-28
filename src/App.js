@@ -9,16 +9,18 @@ import LoginModal from './components/LoginModal';
 import { AuthProvider } from './contexts/AuthContext';
 import CartModal from './components/CartModal';
 import { CartProvider } from './contexts/CartContext';
+import RegisterModal from './components/RegisterModal';
 
 function App() {
     const [isLoginOpen, setIsLoginOpen] = useState(false);
     const [isCartOpen, setIsCartOpen] = useState(false);
+    const [isRegisterOpen, setIsRegisterOpen] = useState(false);
 
     return (
         <AuthProvider>
             <CartProvider>
                 <div>
-                    <Header onLoginClick={() => setIsLoginOpen(true)} onCartClick={() => setIsCartOpen(true)} />
+                    <Header onLoginClick={() => setIsLoginOpen(true)} onCartClick={() => setIsCartOpen(true)} onRegisterClick={() => setIsRegisterOpen(true)} />
                     <Routes>
                         <Route path='/' element={ <Home /> } />
                         <Route path='menu' element={ <Menu /> } />
@@ -27,6 +29,7 @@ function App() {
                     <Footer />
                     <LoginModal isOpen={isLoginOpen} onClose={() => setIsLoginOpen(false)} />
                     <CartModal isOpen={isCartOpen} onClose={() => setIsCartOpen(false)}/>
+                    <RegisterModal isOpen={isRegisterOpen} onClose={() => setIsRegisterOpen(false)} />
                 </div>
             </CartProvider>
         </AuthProvider>
