@@ -22,7 +22,10 @@ function LoginModal({ isOpen, onClose }) {
             
             const data = await response.json();
 
-            if (!response.ok) console.error('Login failed:', data);
+            if (!response.ok) {
+                console.error('Registration failed: ', data);
+                return;
+            }
 
             console.log('Login successful: ', data);
             login(data.token, data.user);

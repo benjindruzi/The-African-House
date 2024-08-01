@@ -4,6 +4,7 @@ function RegisterModal({ isOpen, onClose }) {
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [confirmationPassword, setConfirmationPassword] = useState('');
 
     if (!isOpen) return;
 
@@ -21,8 +22,11 @@ function RegisterModal({ isOpen, onClose }) {
 
             const data = await response.json();
 
-            if (!response.ok) console.error('Registration failed: ', data);
-
+            if (!response.ok) {
+                console.error('Registration failed: ', data);
+                return;
+            }
+            
             console.log('Registration successful');
             onClose();
         } catch (error) {
@@ -53,11 +57,18 @@ function RegisterModal({ isOpen, onClose }) {
                         </label>
                         <input className="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="Enter your password" value={password} onChange={(event) => setPassword(event.target.value)} />
                     </div>
+                    <div className="mb-4">
+                        <label className="block text-sm font-bold mb-2" htmlFor="confirm-password">
+                            Confirm Password
+                        </label>
+                        <input className="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline" id="confirm-password" type="confirm-password" placeholder="Confirm your password" value={confirmationPassword} onChange={(event) => setConfirmationPassword(event.target.value)} />
+                    </div>
+                    {password !== confirmationPassword && <span className="text-red-500">Passwords do not match</span>}
                     <div className="flex items-center justify-between">
                         <button className="bg-yellow-300 font-bold hover:bg-yellow-600 text-black py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
                             Register
                         </button>
-                        <button className="text-red-500 hover:text-red-700" type="button">
+                        <button onClick={onClose} className="text-red-500 hover:text-red-700" type="button">
                             Cancel
                         </button>
                     </div>

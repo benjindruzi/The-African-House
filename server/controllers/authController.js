@@ -9,7 +9,7 @@ const registerUser = async (req, res) => {
         const existingUser = await usersModel.getUserByEmail(email);
 
         if (existingUser) {
-            return res.status(409).send('A user with this email already exists');
+            return res.status(409).json('A user with this email already exists');
         }
 
         const hashedPassword = await bcrypt.hash(password, 10);
@@ -19,7 +19,7 @@ const registerUser = async (req, res) => {
 
         res.status(201).json(user);
     } catch (error) {
-        res.status(500).send({ error: error.message });
+        res.status(500).json({ error: error.message });
     }
 };
 
@@ -29,13 +29,13 @@ const loginUser = async (req, res) => {
     const user = await usersModel.getUserByEmail(email);
 
     if (!user) {
-        return res.status(404).send('User not found');
+        return res.status(404).json('User not found');
     }
 
     const isValidUser = await bcrypt.compare(password, user.password);
 
     if (!isValidUser) {
-        return res.status(400).send('Invalid credentials');
+        return res.status(400).json('Invalid credentials');
     }
 
     const token = jwt.sign(

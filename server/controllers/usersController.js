@@ -1,8 +1,8 @@
 const usersModel = require('../models/usersModel');
 
-const getCurrentUser = async (req, res) => {
+// const getCurrentUser = async (req, res) => {
     
-};
+// };
 
 const getUsers = async (req, res) => {
     const users = await usersModel.getUsers();
@@ -10,7 +10,7 @@ const getUsers = async (req, res) => {
     try {
         res.json(users);
     } catch (error) {
-        res.status(500).send({ error: error.message });
+        res.status(500).json({ error: error.message });
     }
 };
 
@@ -23,10 +23,10 @@ const getUserById = async (req, res) => {
         if (user) {
             res.status(200).json(user);
         } else {
-            res.status(404).send('User not found');
+            res.status(404).json('User not found');
         }
     } catch (error) {
-        return res.status(500).send({ error: error.message });
+        return res.status(500).json({ error: error.message });
     }
 };
 

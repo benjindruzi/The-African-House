@@ -6,7 +6,7 @@ const getMenuItems = async (req, res) => {
         
         res.json(menuItems);
     } catch (error) {
-        res.status(500).send({ error: error.message });
+        res.status(500).json({ error: error.message });
     }
 };
 
@@ -19,10 +19,10 @@ const getMenuItemById = async (req, res) => {
         if (menuItem) {
             res.status(200).json(menuItem);
         } else {
-            res.status(404).send('Menu item not found');
+            res.status(404).json('Menu item not found');
         }
     } catch (error) {
-        res.status(500).send({ error: error.message });
+        res.status(500).json({ error: error.message });
     }
 };
 
@@ -35,10 +35,10 @@ const createMenuItem = async (req, res) => {
         if (newMenuItem) {
             res.status(201).json(newMenuItem);
         } else {
-            res.status(400).send('Failed to create a new menu item');
+            res.status(400).json('Failed to create a new menu item');
         }
     } catch (error) {
-        res.status(500).send({ error: error.message});
+        res.status(500).json({ error: error.message});
     }
 };
 
@@ -52,10 +52,10 @@ const updateMenuItem = async (req, res) => {
         if (updatedMenuItem) {
             res.status(200).json(updatedMenuItem);
         } else {
-            res.status(404).send('Menu item not found');
+            res.status(404).json('Menu item not found');
         }
     } catch (error) {
-        res.status(500).send({ error: error.message });   
+        res.status(500).json({ error: error.message });   
     }
 };
 
@@ -68,10 +68,10 @@ const deleteMenuItem = async (req, res) => {
         if (deletedMenuItem) {
             res.status(200).json({ message: `Menu item with Id: ${id} deleted successfully` });  
         } else {
-            res.status(404).send('Menu item not found');
+            res.status(404).json('Menu item not found');
         }
     } catch (error) {
-        res.status(500).send({ error: error.message});
+        res.status(500).json({ error: error.message});
     }
 };
 

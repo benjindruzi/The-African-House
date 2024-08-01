@@ -6,7 +6,7 @@ const getOrders = async (req, res) => {
     try {
         res.json(orders);
     } catch (error) {
-        res.status(500).send({ error: error.message });
+        res.status(500).json({ error: error.message });
     }
 };
 
@@ -21,7 +21,7 @@ const createOrder = async (req, res) => {
             orderId: newOrder.orderId,
         });
     } catch (error) {
-        res.status(500).send({ error: error.message });
+        res.status(500).json({ error: error.message });
     }
 };
 
