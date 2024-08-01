@@ -1,9 +1,5 @@
 const usersModel = require('../models/usersModel');
 
-// const getCurrentUser = async (req, res) => {
-    
-// };
-
 const getUsers = async (req, res) => {
     const users = await usersModel.getUsers();
 
