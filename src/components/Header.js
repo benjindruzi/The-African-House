@@ -23,7 +23,7 @@ function Header({ onLoginClick, onCartClick, onRegisterClick }) {
                     {isAuthenticated ? (
                         <>
                             <button onClick={onCartClick} className="mr-4 hover:underline">Cart</button>
-                            <button onClick={logout} className="mr-4 hover:underline">Sign Out</button>
+                            <button onClick={logout} className="mr-4 hover:underline">Logout</button>
                         </>
                         ) : 
                         (

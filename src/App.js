@@ -40,7 +40,7 @@ function App() {
                     </Routes>
                     <Footer />
                     <LoginModal isOpen={isLoginOpen} onClose={() => setIsLoginOpen(false)} showToast={showToast} />
-                    <CartModal isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
+                    <CartModal isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} showToast={showToast} />
                     <RegisterModal isOpen={isRegisterOpen} onClose={() => setIsRegisterOpen(false)} showToast={showToast} />
                     <ToastContainer position="top-center" autoClose={false} hideProgressBar={true} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover theme="dark" />
                 </div>

@@ -1,7 +1,7 @@
 import { useCart } from '../contexts/CartContext';
 import { useAuth } from '../contexts/AuthContext';
 
-function CartModal({ isOpen, onClose }) {
+function CartModal({ isOpen, onClose, showToast }) {
     const { cart, removeFromCart, clearCart } = useCart();
     const { user } = useAuth();
 
@@ -11,10 +11,14 @@ function CartModal({ isOpen, onClose }) {
 
     const handleCheckout = async () => {
         if (!user) {
-            alert('Please login to checkout');
+            showToast('Please login to checkout', 'error');
+            return;
         }
 
-        console.log('THE USER IS: ', user);
+        if (cart.length === 0) {
+            showToast('Please add some items to your cart', 'error');
+            return;
+        }
 
         const token = localStorage.getItem('token');
 
@@ -37,12 +41,12 @@ function CartModal({ isOpen, onClose }) {
                 throw new Error('Failed to create order');
             }
 
-            alert('Order placed successfully');
+            showToast('Order placed successfully', 'success');
             clearCart();
             onClose();
         } catch (error) {
             console.error(error);
-            alert('Checkout failed');
+            showToast('Checkout failed', 'error');
         }
     };
 
