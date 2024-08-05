@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-function RegisterModal({ isOpen, onClose }) {
+function RegisterModal({ isOpen, onClose, showToast }) {
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -37,13 +37,16 @@ function RegisterModal({ isOpen, onClose }) {
 
             if (!response.ok) {
                 console.error('Registration failed: ', data);
+                showToast(data, 'error');
                 return;
             }
 
             console.log('Registration successful');
+            showToast('Registration successful', 'success');
             onClose();
         } catch (error) {
             console.error('Error: ', error);
+            showToast('An error occurred. Please try again.', 'error');
         }
     }
 
@@ -57,7 +60,7 @@ function RegisterModal({ isOpen, onClose }) {
                             Username
                         </label>
                         <input className="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Enter your username" value={username} onChange={(event) => setUsername(event.target.value)} />
-                        {username.length > 0 && username.length < 3 && <span className="text-red-500">Username must be at least 3 characters long</span>}
+                        {username.length > 0 && username.length < 3 && <span className="text-red-500">Must be at least 3 characters long</span>}
                     </div>
                     <div className="mb-4">
                         <label className="block text-sm font-bold mb-2" htmlFor="email">
@@ -66,7 +69,7 @@ function RegisterModal({ isOpen, onClose }) {
                         <input className="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline" id="email" type="email" placeholder="Enter your email" value={email} onChange={(event) => setEmail(event.target.value)} />
                         {email.length > 0 && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) && (
                             <div>
-                                <span className="text-red-500">Please enter a valid email address</span>
+                                <span className="text-red-500">Please enter a valid email</span>
                                 <br />
                             </div>
                         )}
@@ -78,19 +81,19 @@ function RegisterModal({ isOpen, onClose }) {
                         <input className="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="Enter your password" value={password} onChange={(event) => setPassword(event.target.value)} />
                         {password.length > 0 && !/[!@#$%^&*(),.?":{}|<>]/.test(password) && (
                             <div>
-                                <span className="text-red-500">Password must contain at least one special character</span>
+                                <span className="text-red-500">Must contain at least one special character</span>
                                 <br />
                             </div>
                             )}
                             {password.length > 0 && !/\d/.test(password) && (
                             <div>
-                                <span className="text-red-500">Password must contain at least one digit</span>
+                                <span className="text-red-500">Must contain at least one digit</span>
                                 <br />
                             </div>
                             )}
                             {password.length > 0 && password.length < 8 && (
                             <div>
-                                <span className="text-red-500">Password must be at least 8 characters long</span>
+                                <span className="text-red-500">Must be at least 8 characters long</span>
                                 <br />
                             </div>
                         )}

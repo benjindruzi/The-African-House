@@ -10,11 +10,11 @@ const registerUser = async (req, res) => {
         const existingUserByEmail = await usersModel.getUserByEmail(email);
 
         if (existingUserByUsername) {
-            return res.status(409).json('A user with this username already exists');
+            return res.status(409).json('Username already exists');
         }
 
         if (existingUserByEmail) {
-            return res.status(409).json('A user with this email already exists');
+            return res.status(409).json('Email already exists');
         }
 
         const hashedPassword = await bcrypt.hash(password, 10);

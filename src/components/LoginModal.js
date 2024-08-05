@@ -1,12 +1,21 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useAuth } from '../contexts/AuthContext';
 
-function LoginModal({ isOpen, onClose }) {
+function LoginModal({ isOpen, onClose, showToast }) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const { login } = useAuth();
+    const [isFormValid, setIsFormValid] = useState(false);
 
-    if (!isOpen) return;
+    useEffect(() => {
+        const isValid =
+            /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) &&
+            password.length > 0;
+
+        setIsFormValid(isValid);
+    }, [email, password]);
+
+    if (!isOpen) return null;
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -23,15 +32,18 @@ function LoginModal({ isOpen, onClose }) {
             const data = await response.json();
 
             if (!response.ok) {
-                console.error('Registration failed: ', data);
+                console.error('Login failed: ', data);
+                showToast(data, 'error');
                 return;
             }
 
             console.log('Login successful: ', data);
             login(data.token, data.user);
+            showToast('Login successful!', 'success');
             onClose();
         } catch (error) {
             console.error('Error:', error);
+            showToast('An error occurred. Please try again.', 'error');
         }
     };
 
@@ -44,16 +56,17 @@ function LoginModal({ isOpen, onClose }) {
                         <label className="block text-sm font-bold mb-2" htmlFor="email">
                             Email
                         </label>
-                        <input className="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"id="email" type="text" placeholder="Enter your email" value={email} onChange={(event) => {setEmail(event.target.value)}} />
+                        <input className="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline" id="email" type="text" placeholder="Enter your email" value={email} onChange={(event) => {setEmail(event.target.value)}} />
+                        {email.length > 0 && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) && <span className="text-red-500">Please enter a valid email</span>}
                     </div>
                     <div className="mb-4">
                         <label className="block text-sm font-bold mb-2" htmlFor="password">
                             Password
                         </label>
-                        <input className="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="Enter your password" value={password} onChange={(event) => {setPassword(event.target.value)}}/>
+                        <input className="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="Enter your password" value={password} onChange={(event) => {setPassword(event.target.value)}} />
                     </div>
                     <div className="flex items-center justify-between">
-                        <button className="bg-yellow-300 font-bold hover:bg-yellow-600 text-black py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+                        <button className={`py-2 px-4 rounded focus:outline-none focus:shadow-outline font-bold ${isFormValid ? 'bg-yellow-300 hover:bg-yellow-600 text-black' : 'bg-gray-400 text-gray-700 cursor-not-allowed'}`} type="submit" disabled={!isFormValid}>
                             Login
                         </button>
                         <button className="text-red-500 hover:text-red-700" type="button" onClick={onClose}>
