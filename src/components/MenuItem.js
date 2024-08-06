@@ -1,6 +1,6 @@
 import { useCart } from '../contexts/CartContext';
 
-function MenuItem({ id, name, description, price }) {
+function MenuItem({ id, name, description, price, showToast }) {
     const formatPrice = (price) => {
         return `$${price.toFixed(2)}`;
     };

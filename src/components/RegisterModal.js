@@ -1,11 +1,13 @@
 import { useState, useEffect } from 'react';
+import { useToast } from '../contexts/ToastContext';
 
-function RegisterModal({ isOpen, onClose, showToast }) {
+function RegisterModal({ isOpen, onClose }) {
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmationPassword, setConfirmationPassword] = useState('');
     const [isFormValid, setIsFormValid] = useState(false);
+    const { showToast } = useToast();
 
     useEffect(() => {
         const isValid =

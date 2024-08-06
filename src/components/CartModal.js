@@ -1,9 +1,11 @@
-import { useCart } from '../contexts/CartContext';
 import { useAuth } from '../contexts/AuthContext';
+import { useCart } from '../contexts/CartContext';
+import { useToast } from '../contexts/ToastContext';
 
-function CartModal({ isOpen, onClose, showToast }) {
-    const { cart, removeFromCart, clearCart } = useCart();
+function CartModal({ isOpen, onClose }) {
     const { user } = useAuth();
+    const { cart, removeFromCart, clearCart } = useCart();
+    const { showToast } = useToast();
 
     if (!isOpen) return;
 
@@ -16,7 +18,7 @@ function CartModal({ isOpen, onClose, showToast }) {
         }
 
         if (cart.length === 0) {
-            showToast('Please add some items to your cart', 'error');
+            showToast('Cannot order from empty cart', 'error');
             return;
         }
 
@@ -36,13 +38,16 @@ function CartModal({ isOpen, onClose, showToast }) {
                 })
             });
 
+            const data = await response.json()
+
             if (!response.ok){
-                console.error('Error data:', await response.json());
-                throw new Error('Failed to create order');
+                console.error('Error:', data);
+                showToast(data, 'error');
+                return
             }
 
             showToast('Order placed successfully', 'success');
-            clearCart();
+            clearCart(user.id);
             onClose();
         } catch (error) {
             console.error(error);
