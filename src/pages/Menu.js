@@ -11,17 +11,21 @@ function Menu() {
             const token = localStorage.getItem('token');
             
             try {
-                const response = await fetch('http://localhost:5000/menu-items', {
+                const response = await fetch(`${process.env.REACT_APP_API_URL}/menu-items`, {
                     method: 'GET',
                     headers: {
                         'Authorization': `Bearer ${token}`,
                         'Content-Type': 'application/json'
                     }
                 });
+
+                const data = await response.json();
+
                 if (!response.ok) {
+                    console.error('Error:', data);
                     throw new Error(`HTTP error! Status: ${response.status}`);
                 }
-                const data = await response.json();
+
                 setMenuItems(groupByCategory(data));
                 setLoading(false);
             } catch (error) {

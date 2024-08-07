@@ -34,7 +34,7 @@ function App() {
                         <LoginModal isOpen={isLoginOpen} onClose={() => setIsLoginOpen(false)} />
                         <CartModal isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
                         <RegisterModal isOpen={isRegisterOpen} onClose={() => setIsRegisterOpen(false)} />
-                        <ToastContainer position="top-center" autoClose={5000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover theme="dark" />
+                        <ToastContainer position="top-center" autoClose={3000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover theme="dark" />
                     </div>
                 </CartProvider>
             </ToastProvider>

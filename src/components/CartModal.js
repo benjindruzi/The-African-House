@@ -25,7 +25,7 @@ function CartModal({ isOpen, onClose }) {
         const token = localStorage.getItem('token');
 
         try {
-            const response = await fetch('http://localhost:5000/orders', {
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/orders`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
