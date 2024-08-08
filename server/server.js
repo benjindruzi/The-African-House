@@ -19,7 +19,9 @@ require('dotenv').config({ path: __dirname + '/../.env' });
 // Middleware
 app.use(express.json());
 app.use(morgan('dev'));
-app.use(cors());
+app.use(cors({
+    origin: 'https://the-african-house-n0sd.onrender.com',
+}));
 
 // Import routes
 const authRoutes = require('./routes/authRoutes');
