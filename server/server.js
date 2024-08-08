@@ -2,8 +2,9 @@ const express = require('express');
 const app = express();
 const morgan = require('morgan');
 const cors = require('cors');
+const path = require('path');
 
-// Load
+// Static files serving for production
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static(path.join(__dirname, '../build')));
 
