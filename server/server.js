@@ -4,15 +4,6 @@ const morgan = require('morgan');
 const cors = require('cors');
 const path = require('path');
 
-// Static files serving for production
-if (process.env.NODE_ENV === 'production') {
-    app.use(express.static(path.join(__dirname, '../build')));
-
-    app.get('*', (req, res) => {
-        res.sendFile(path.join(__dirname, '../build', 'index.html'));
-    });
-}
-
 // Load .env variables
 require('dotenv').config({ path: __dirname + '/../.env' });
 
@@ -34,6 +25,15 @@ app.use('/auth', authRoutes);
 app.use('/users', usersRoutes);
 app.use('/menu-items', menuItemsRoutes);
 app.use('/orders', ordersRoutes);
+
+// Static files serving for production
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static(path.join(__dirname, '../build')));
+
+    app.get('*', (req, res) => {
+        res.sendFile(path.join(__dirname, '../build', 'index.html'));
+    });
+}
 
 
 const PORT = process.env.PORT || 5000;
