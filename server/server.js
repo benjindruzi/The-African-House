@@ -21,10 +21,10 @@ const menuItemsRoutes = require('./routes/menuItemsRoutes');
 const ordersRoutes = require('./routes/ordersRoutes');
 
 // Mount routes
-app.use('/auth', authRoutes);
-app.use('/users', usersRoutes);
-app.use('/menu-items', menuItemsRoutes);
-app.use('/orders', ordersRoutes);
+app.use('/api/auth', authRoutes);
+app.use('/api/users', usersRoutes);
+app.use('/api/menu-items', menuItemsRoutes);
+app.use('/api/orders', ordersRoutes);
 
 // Static files serving for production
 if (process.env.NODE_ENV === 'production') {
@@ -34,7 +34,6 @@ if (process.env.NODE_ENV === 'production') {
         res.sendFile(path.join(__dirname, '../build', 'index.html'));
     });
 }
-
 
 const PORT = process.env.PORT || 5000;
 

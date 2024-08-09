@@ -11,7 +11,7 @@ function Menu() {
             const token = localStorage.getItem('token');
             
             try {
-                const response = await fetch(`${process.env.REACT_APP_API_URL}/menu-items`, {
+                const response = await fetch(`${process.env.REACT_APP_API_URL}/api/menu-items`, {
                     method: 'GET',
                     headers: {
                         'Authorization': `Bearer ${token}`,

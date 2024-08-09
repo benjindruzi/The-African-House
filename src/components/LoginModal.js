@@ -23,7 +23,7 @@ function LoginModal({ isOpen, onClose }) {
         event.preventDefault();
 
         try {
-            const response = await fetch(`${process.env.REACT_APP_API_URL}/auth/login`, {
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/api/auth/login`, {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json',
