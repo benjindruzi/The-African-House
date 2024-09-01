@@ -13,7 +13,7 @@ This project is a web application for a fictional restaurant called "The African
 
 ## Demo
 
-[Live demo coming soon...](https://the-african-house-n0sd.onrender.com/)
+[Live demo](https://the-african-house-n0sd.onrender.com/)
 
 ## Features
 
