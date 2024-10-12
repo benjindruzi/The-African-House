@@ -5,14 +5,12 @@ const cors = require('cors');
 const path = require('path');
 
 // Load .env variables
-require('dotenv').config({ path: __dirname + '/../.env' });
+require('dotenv').config({ path: __dirname + '/../server/.env' });
 
 // Middleware
 app.use(express.json());
 app.use(morgan('dev'));
-app.use(cors({
-    origin: 'https://the-african-house-n0sd.onrender.com',
-}));
+app.use(cors());
 
 // Import routes
 const authRoutes = require('./routes/authRoutes');
