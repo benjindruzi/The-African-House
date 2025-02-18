@@ -1,6 +1,6 @@
 # The African House
 
-This project is a web application for a fictional restaurant called "The African House," which showcases the rich culinary heritage of African cuisine. I built this application as a practice project. The project is built with React for the frontend and Node.js with Express for the backend and building the REST API, along with a PostgreSQL database.
+This project is a web application for a fictional restaurant called "The African House," which showcases the rich culinary heritage of African cuisine. I built this application as a practice project. The project is built with React for the frontend and Node.js with Express for the backend and REST API, along with a PostgreSQL database.
 
 ## Table of Contents
 
