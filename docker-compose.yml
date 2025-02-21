@@ -1,0 +1,37 @@
+services:
+    frontend:
+        build: ./client
+        ports:
+            - '3100:80'
+        depends_on:
+            - backend
+    
+    backend:
+        build: ./server
+        ports:
+            - '5000:5000'
+        depends_on:
+            - db
+        environment:
+            - DB_USER=postgres
+            - DB_HOST=db
+            - DB_DATABASE=african_house_db
+            - DB_PASSWORD=postgres
+            - DB_PORT=5432
+            - JWT_SECRET=4e11bf303dd3e66b766d4d1a39d88972dda454a3b6591d57cd9ad89b383ab7fb
+            - NODE_ENV=development
+    
+    db:
+        image: postgres:16
+        environment:
+            - POSTGRES_USER=postgres
+            - POSTGRES_PASSWORD=postgres
+            - POSTGRES_DB=african_house_db
+        ports:
+            - '5432:5432'
+        volumes:
+            - db-data:/var/lib/postgresql/data
+        restart: always
+
+volumes:
+    db-data:
